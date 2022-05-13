@@ -3,6 +3,10 @@ package ui;
 import java.io.IOException;
 import java.util.Properties;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -12,7 +16,7 @@ import pages.HomePage;
 import utilities.DriverInit;
 import utilities.Functions;
 
-
+@Feature("Login feature")
 public class LoginTest extends DriverInit {
 	
 	public static WebDriver driver;
@@ -23,15 +27,17 @@ public class LoginTest extends DriverInit {
 	public void testStartUp(String env) throws IOException {
 		testdata = utilities.InitTestData.getTestData(env);
 		driver = DriverInit.driver;
-
 	}
 
 	@AfterTest
-	public void tearDown(){
+	public void closeBrowser(){
 		driver.close();
 	}
 
-	@Test (priority=1, groups="smoke") 
+
+	@Story("story_id: 001 - successful login")
+	@Description("verify successful login to OpenKart app")
+	@Test (priority=1, groups="smoke",description = "verify successful login to OpenKart app")
 	public void successful_Login_Test(){
 	try{
 		driver.get(testdata.getProperty("url"));

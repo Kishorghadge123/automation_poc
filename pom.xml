@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mavenProj</groupId>
-    <artifactId>NishFramework3</artifactId>
+    <artifactId>automation_poc_project</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -17,7 +17,7 @@
         <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-        <aspectj.version>1.9.6</aspectj.version>
+        <aspectj.version>1.9.9.1</aspectj.version>
         <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
     </properties>
 
@@ -106,6 +106,13 @@
             <version>4.3.3</version>
             <scope>compile</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+            <scope>runtime</scope>
+        </dependency>
 
     </dependencies>
 
@@ -137,15 +144,6 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                 </configuration>
-                <dependencies>
-
-                    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>

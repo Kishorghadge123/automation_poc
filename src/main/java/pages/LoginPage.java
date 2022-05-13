@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,18 +30,22 @@ public class LoginPage {
 	@FindBy (xpath="//div[contains(text(),\"No match for E-Mail and/or Password.\")]")
 	public static WebElement errorMessage;
 
+	@Step("go to Login page")
 	public void goToLogin(){
 		this.loginButton.click();
 	}
 
+	@Step("enter username")
 	public void enterUsername(String username){
 		this.username.sendKeys(username);
 	}
 
+	@Step("enter password")
 	public void enterPassword(String password){
 		this.password.sendKeys(password);
 	}
 
+	@Step("click login button")
 	public void clickLoginButton(){
 		this.LoginButton.click();
 	}

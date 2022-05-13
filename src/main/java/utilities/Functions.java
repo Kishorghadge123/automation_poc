@@ -1,5 +1,6 @@
 package utilities;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -46,6 +47,7 @@ public class Functions {
 		action.doubleClick(element).build().perform();
 	}
 
+	@Step("verify element displayed")
 	public static void verifyElementDisplayed(WebElement element) throws InterruptedException{
 		Thread.sleep(1000);
 		Assert.assertTrue(element.isDisplayed());
