@@ -1,5 +1,6 @@
 package utilities;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -10,13 +11,23 @@ import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
+
 import java.io.File;
 import java.io.IOException;
 
 public class Functions {
 	public static WebDriver driver= DriverInit.driver;
 	public static WebDriverWait wait;
-	
+	public static String test_type;
+
+	@Step("open url {0} in web browser")
+	public static void openURL(String url){
+		driver.get(url);
+	}
+
+	@Step("click on element - {0}")
 	public static void click(WebElement element) throws InterruptedException{
 		Thread.sleep(1000);
 		WebDriverWait wait = new WebDriverWait(driver,30);
@@ -68,6 +79,11 @@ public class Functions {
 
 		wait = new WebDriverWait(DriverInit.driver, Integer.parseInt(timeout));
 		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	@Attachment
+	public static byte[] saveFailureScreenShot() {
+		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 }

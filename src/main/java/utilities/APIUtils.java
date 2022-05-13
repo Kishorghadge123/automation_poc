@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import io.qameta.allure.Step;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -28,11 +29,11 @@ public class APIUtils {
     public static RequestSpecification initRequest() {
         response = null;
         request = null;
-        request = RestAssured.given();
+        request = RestAssured.given().filter(new AllureRestAssured());
         return request;
     }
 
-    @Step("make a post request api call")
+//    @Step("make a post request api call")
     public static Response postRequest(String endpoint, String formdata){
         String token = getToken();
         request = initRequest();

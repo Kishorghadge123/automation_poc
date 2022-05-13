@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="UI_Automation_Smoke_Suite" >
+<suite name="API_Regression_Suite" >
 	<listeners>
 		<listener class-name="utilities.ListenerUtils"></listener>
 	</listeners>
   
 	<test name="Test">
-    		<parameter name="browser" value="chrome"/>
+			<parameter name="test_type" value="api"/>
 			<parameter name="environment" value="qa"/>
 <!--    		<groups>-->
 <!--    			<run>-->
@@ -14,7 +14,7 @@
 <!--    			</run>-->
 <!--    		</groups>-->
     		<classes>
-      			<class name="ui.LoginTest"/>
+      			<class name="api.postDataValidation.PostRequestTest"/>
     		</classes>
   	</test> <!-- Test -->
-</suite> <!-- UI_Automation_Smoke_Suite-->
+</suite> <!-- API_Regression_Suite-->

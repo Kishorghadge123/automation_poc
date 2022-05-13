@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="UI_Automation_Smoke_Suite" >
-	<listeners>
-		<listener class-name="utilities.ListenerUtils"></listener>
-	</listeners>
+<suite name="UI_Regression_Suite" >
+
+	 <listeners>
+	 	<listener class-name="utilities.ListenerUtils"></listener>
+	 </listeners>
   
 	<test name="Test">
+			<parameter name="test_type" value="ui"/>
     		<parameter name="browser" value="chrome"/>
 			<parameter name="environment" value="qa"/>
 <!--    		<groups>-->
@@ -17,4 +19,4 @@
       			<class name="ui.LoginTest"/>
     		</classes>
   	</test> <!-- Test -->
-</suite> <!-- UI_Automation_Smoke_Suite-->
+</suite> <!-- UI_Regression_Suite-->

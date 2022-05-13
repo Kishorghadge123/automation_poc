@@ -35,12 +35,12 @@ public class LoginPage {
 		this.loginButton.click();
 	}
 
-	@Step("enter username")
+	@Step("enter username {0}")
 	public void enterUsername(String username){
 		this.username.sendKeys(username);
 	}
 
-	@Step("enter password")
+	@Step("enter password {0}")
 	public void enterPassword(String password){
 		this.password.sendKeys(password);
 	}
