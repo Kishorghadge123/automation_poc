@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import pages.AccountPage;
 import pages.LoginPage;
 import pages.HomePage;
 import utilities.DriverInit;
@@ -16,22 +17,18 @@ import utilities.Functions;
 @Feature("Login feature")
 @Listeners(utilities.ListenerUtils.class)
 public class LoginTest extends DriverInit {
-	
 	public static WebDriver driver;
 	public static Properties testdata;
-	
 	@Parameters("environment")
 	@BeforeClass (groups="ui")
 	public void testStartUp(String env) throws IOException {
 		testdata = utilities.InitTestData.getTestData(env);
 		driver = DriverInit.driver;
 	}
-
 	@AfterTest
-	public void closeBrowser(){
+	public void closeBrowser() {
 		driver.quit();
 	}
-
 	@Severity(SeverityLevel.CRITICAL)
 	@Story("story_id: 001 - successful login test")
 	@Description("verify user able to login to OpenKart app with valid credentials")
@@ -43,7 +40,10 @@ public class LoginTest extends DriverInit {
 		loginPage.enterUsername(testdata.getProperty("username"));
 		loginPage.enterPassword(testdata.getProperty("password"));
 		loginPage.clickLoginButton();
+		loginPage.enterPin(testdata.getProperty("pin"));
+		loginPage.clickContinueButton();
 		HomePage homePage = new HomePage();
+		homePage.welecomeOpenCart();
 		Functions.waitForElementLoad(HomePage.welcomeText,testdata.getProperty("default_timeout"));
 		Functions.verifyElementDisplayed(HomePage.welcomeText);
 	}
@@ -59,10 +59,12 @@ public class LoginTest extends DriverInit {
 		loginPage.enterUsername(testdata.getProperty("username"));
 		loginPage.enterPassword("invalid");
 		loginPage.clickLoginButton();
-
 		Functions.waitForElementLoad(loginPage.errorMessage, testdata.getProperty("default_timeout"));
 		Functions.verifyElementDisplayed(loginPage.errorMessage);
 	}
+
+
+
 }
 
 

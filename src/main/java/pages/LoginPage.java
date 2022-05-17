@@ -30,6 +30,12 @@ public class LoginPage {
 	@FindBy (xpath="//div[contains(text(),\"No match for E-Mail and/or Password.\")]")
 	public static WebElement errorMessage;
 
+	@FindBy (xpath="//input[@id='input-pin']")
+	public static WebElement pin;
+
+	@FindBy (xpath="//button[@class='btn btn-primary btn-lg']")
+	public static WebElement continueButton;
+
 	@Step("go to Login page")
 	public void goToLogin(){
 		this.loginButton.click();
@@ -49,4 +55,16 @@ public class LoginPage {
 	public void clickLoginButton(){
 		this.LoginButton.click();
 	}
+
+	@Step("enter pin")
+			public void enterPin(String pin){
+		this.pin.sendKeys(pin);
+			}
+
+	@Step("click on continue")
+			public void clickContinueButton()
+	{
+		this.continueButton.click();
+	}
+
 }

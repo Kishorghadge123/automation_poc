@@ -6,6 +6,7 @@
 	</listeners>
   
 	<test name="Test">
+		<parameter name="test_type" value="ui"/>
     		<parameter name="browser" value="chrome"/>
 			<parameter name="environment" value="qa"/>
 <!--    		<groups>-->
