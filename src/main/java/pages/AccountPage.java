@@ -49,7 +49,9 @@ public static WebElement calenderPickerSwitch2;
     //@step("click Add project")
     public void clickAddProject()
     {
-        this.addProject.click();
+        Functions.waitForElementClickable(addProject,"5000");
+
+      //  this.addProject.click();
     }
    // @step("Enter Show case name")
     public void enterShowCaseName(String name){
