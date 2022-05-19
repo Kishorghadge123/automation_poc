@@ -6,7 +6,6 @@
     <artifactId>automation_poc_project</artifactId>
     <version>0.0.3-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>NishFramework3</name>
 
     <properties>
@@ -71,15 +70,12 @@
             <version>2.14.0</version>
             <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
             <version>4.3.3</version>
             <scope>test</scope>
         </dependency>
-
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>xml-path</artifactId>
