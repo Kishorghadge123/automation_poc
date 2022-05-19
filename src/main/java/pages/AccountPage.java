@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,19 +42,17 @@ public static WebElement calenderPickerSwitch2;
  public static WebElement submit;
     public void clickAccount() {this.account.click();
     }
-   // @step("click showcart")
+   @Step ("click showcart")
     public void clickShowCart()
     {
         this.showcase.click();
     }
-    //@step("click Add project")
+    @Step ("click Add project")
     public void clickAddProject()
     {
-        Functions.waitForElementClickable(addProject,"5000");
-
-      //  this.addProject.click();
+        this.addProject.click();
     }
-   // @step("Enter Show case name")
+    @Step("Enter Show case name")
     public void enterShowCaseName(String name){
         this.showcasename.sendKeys(name);
     }
@@ -111,13 +110,13 @@ public static WebElement calenderPickerSwitch2;
             }
         }
     }
-            //@step("Enter Wensite")
+            @Step("Enter Wensite")
             public void enterWebsite (String website)
             {
 
                 this.website.sendKeys(website);
             }
-            //@step("click on submit button")
+            @Step("click on submit button")
             public void clickSubmitButton ()
             {
                 this.submit.click();
