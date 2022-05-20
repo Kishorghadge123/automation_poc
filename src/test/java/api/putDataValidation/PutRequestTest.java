@@ -7,6 +7,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utilities.APIUtils;
@@ -32,14 +33,20 @@ public class PutRequestTest {
             String body = Files.readString(Path.of(System.getProperty("user.dir") + "\\src\\test\\resources\\api_test_data\\CreateUserJsonBody.json"), StandardCharsets.US_ASCII);
 
             Response response = APIUtils.postRequest(end_point,body);
+            System.out.println(response);
 
             Assert.assertEquals(response.getStatusCode(),201,"status code mismatch");
+
             String id =  response.getBody().jsonPath().getJsonObject("id").toString();
+
+            System.out.println(id);
 
              end_point = APIUtils.api_config.getProperty("create_user_end_point")+"/"+id;
               body = Files.readString(Path.of(System.getProperty("user.dir") + "\\src\\test\\resources\\api_test_data\\updateUserJsonBody.json"), StandardCharsets.US_ASCII);
 
                response = APIUtils.putRequest(end_point,body);
+
+               System.out.println(response);
 
         Assert.assertEquals(response.getStatusCode(),200,"status code mismatch");
 

@@ -1,11 +1,11 @@
 package utilities;
 import io.qameta.allure.Step;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class InitTestData {
+
         @Step("read test data file")
         public static Properties getTestData(String env) throws IOException {
             Properties testdata = new Properties();
