@@ -17,11 +17,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class PutRequestTest {
-
+//    public static String id;
+    String end_point;
         @BeforeClass
         public void startUp() throws IOException {
         APIUtils.readAPIConfigs();
         APIUtils.setBaseURL();
+    }
+    @AfterClass
+    public void delete() throws IOException {
+        Response response = APIUtils.deleteRequest(end_point);
+        Assert.assertEquals(response.getStatusCode(),204,"status code mismatch");
     }
         @Feature("API Test")
         @Story("API-001: api test for update user functionality")
@@ -29,7 +35,7 @@ public class PutRequestTest {
         @Test(description = "to verify user is updated when update user api is called")
         public void test_user_updated_successfully_using_put_api_method1_body_from_json_file() throws Exception {
 
-            String end_point = APIUtils.api_config.getProperty("create_user_end_point");
+             end_point = APIUtils.api_config.getProperty("create_user_end_point");
             String body = Files.readString(Path.of(System.getProperty("user.dir") + "\\src\\test\\resources\\api_test_data\\CreateUserJsonBody.json"), StandardCharsets.US_ASCII);
 
             Response response = APIUtils.postRequest(end_point,body);
@@ -50,7 +56,7 @@ public class PutRequestTest {
 
         Assert.assertEquals(response.getStatusCode(),200,"status code mismatch");
 
-       // String id =  response.getBody().jsonPath().getJsonObject("id").toString();
+//        String id =  response.getBody().jsonPath().getJsonObject("id").toString();
         String name =  response.getBody().jsonPath().getJsonObject("name").toString();
         String email =  response.getBody().jsonPath().getJsonObject("email").toString();
         String gender =  response.getBody().jsonPath().getJsonObject("gender").toString();

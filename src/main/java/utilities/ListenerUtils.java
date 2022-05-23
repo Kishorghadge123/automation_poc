@@ -1,9 +1,7 @@
 package utilities;
-
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.Parameters;
-
 import static utilities.Functions.driver;
 
 public class ListenerUtils implements ITestListener {

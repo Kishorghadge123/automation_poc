@@ -11,6 +11,9 @@ import utilities.DriverInit;
 import utilities.Functions;
 import java.io.IOException;
 import java.util.Properties;
+
+import static pages.HomePage.logout;
+
 @Feature("Account feature")
 public class AccountTest extends DriverInit
 {
@@ -47,6 +50,7 @@ public class AccountTest extends DriverInit
     @Test(priority='4',groups="smoke")
     public void logoutTest(){
         HomePage homePage=new HomePage();
+        Functions.scrollupdown(logout);
         homePage.clickLogout();
     }
 }

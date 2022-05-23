@@ -12,12 +12,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import static pages.AccountPage.categoryDropdown;
+import static pages.LoginPage.errorPinMsg;
 
 public class Functions {
 	public static WebDriver driver= DriverInit.driver;
@@ -56,12 +58,16 @@ public class Functions {
 	}
 	@Step("verify element displayed")
 	public static void verifyElementDisplayed(WebElement element) throws InterruptedException{
+		SoftAssert softAssert=new SoftAssert();
 		Thread.sleep(1000);
-		Assert.assertTrue(element.isDisplayed());
+		Assert.assertTrue(element.isDisplayed(),"Login & Password is Not Displayed");
+		softAssert.assertAll();
 	}
 	public static void verifyText(WebElement element, String text) throws InterruptedException{
 		Thread.sleep(1000);
-		Assert.assertEquals(element.getText(), text);
+		SoftAssert softAssert=new SoftAssert();
+		softAssert.assertEquals(errorPinMsg.getText(), text,"text is Not Match ");
+		softAssert.assertAll();
 	}
 	public static void takescreenshot(String testname) throws IOException
 	{
@@ -71,34 +77,56 @@ public class Functions {
 	public static void waitForElementLoad(WebElement element, String timeout){
 		wait = new WebDriverWait(DriverInit.driver, Integer.parseInt(timeout));
 		wait.until(ExpectedConditions.visibilityOf(element));
+
 	}
 	public static void waitForElementClickable(WebElement element, String timeout){
 		wait = new WebDriverWait(DriverInit.driver, Integer.parseInt(timeout));
 		 wait.until(ExpectedConditions.elementToBeClickable(element));
+
 	}
 	@Attachment
 	public static byte[] saveFailureScreenShot()
 	{
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 	}
-
-
 	public static void dropDown(String value)
 	{
 	Select select=new Select(categoryDropdown);
 	select.selectByValue("2");
 		}
-
-
 		public static void initPageFactory(Class page)
 		{
 			PageFactory.initElements(driver, page);
 		}
-
+		public static void flash(WebElement element){
+		String bgcolor=element.getCssValue("backgroundcolor");
+		System.out.println(bgcolor);
+		for(int i=0;i<1;i++){
+			changecolor("#0000",element);
+			changecolor(bgcolor,element);
+		}
+		}
+		public static void changecolor(String color,WebElement element){
+		JavascriptExecutor js=((JavascriptExecutor)driver);
+		js.executeScript("arguments[0].style.backgroundClolor = ' " +color +"'",element);
+		try {
+			Thread.sleep(20);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+		}
+		public static void drowborder(WebElement element){
+			JavascriptExecutor js=((JavascriptExecutor)driver);
+			js.executeScript("arguments[0].style.border='3px solid red'", element);
+		}
+		public static void scrollupdown(WebElement element){
+			JavascriptExecutor js=((JavascriptExecutor)driver);
+			js.executeScript("arguments[0].scrollIntoView();", element);
+		}
 	@Step("{0}")
-	public static void logStep(String message){
+	public static void logStep(String message)
+	{
 		// intentionally kept empty
 	}
-
 	}
 

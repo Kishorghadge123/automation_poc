@@ -101,6 +101,7 @@ public static WebElement calenderPickerSwitch2;
         System.out.println("printing all calendar days");
         for (WebElement day : days) {
             System.out.println(day.getText());
+//            Functions.verifyText(day,"Monday");
         }
         for (WebElement day : days) {
             if (day.getText().equalsIgnoreCase(selectDate)) {
@@ -113,12 +114,12 @@ public static WebElement calenderPickerSwitch2;
             @Step("Enter Wensite")
             public void enterWebsite (String website)
             {
-
                 this.website.sendKeys(website);
             }
             @Step("click on submit button")
             public void clickSubmitButton ()
             {
-                this.submit.click();
+                Functions.waitForElementClickable(submit,"1000");
+               this.submit.click();
             }
 }
