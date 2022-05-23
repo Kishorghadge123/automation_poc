@@ -1,8 +1,5 @@
 package ui;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -14,7 +11,7 @@ import utilities.DriverInit;
 import utilities.Functions;
 import java.io.IOException;
 import java.util.Properties;
-
+@Feature("Account feature")
 public class AccountTest extends DriverInit
 {
     static Properties testdata;

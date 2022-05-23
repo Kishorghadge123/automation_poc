@@ -22,6 +22,7 @@ import static pages.AccountPage.categoryDropdown;
 public class Functions {
 	public static WebDriver driver= DriverInit.driver;
 	public static WebDriverWait wait;
+
 	public static String test_type;
 	@Step("open url {0} in web browser")
 	public static void openURL(String url){
@@ -73,22 +74,31 @@ public class Functions {
 	}
 	public static void waitForElementClickable(WebElement element, String timeout){
 		wait = new WebDriverWait(DriverInit.driver, Integer.parseInt(timeout));
-		wait.until(ExpectedConditions.elementToBeClickable(element));
+		 wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 	@Attachment
 	public static byte[] saveFailureScreenShot()
 	{
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 	}
+
+
 	public static void dropDown(String value)
 	{
 	Select select=new Select(categoryDropdown);
 	select.selectByValue("2");
 		}
+
+
 		public static void initPageFactory(Class page)
 		{
 			PageFactory.initElements(driver, page);
 		}
+
+	@Step("{0}")
+	public static void logStep(String message){
+		// intentionally kept empty
+	}
 
 	}
 

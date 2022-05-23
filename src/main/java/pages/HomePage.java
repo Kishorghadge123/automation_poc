@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +18,7 @@ public class HomePage {
 	@FindBy (xpath="//a[@class='btn btn-black navbar-btn']")
 	public static WebElement logout;
 
-	//@step("Welecome to open cart")
+	@Step("Welecome to open cart")
 	public void welecomeOpenCart()
 	{
 		this.welcomeText();

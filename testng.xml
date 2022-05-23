@@ -15,7 +15,7 @@
 <!--    			</run>-->
 <!--    		</groups>-->
     		<classes>
-      			<class name="ui.LoginTest"/>
+      			<class name="ui.AccountTest"/>
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- UI_Automation_Smoke_Suite-->

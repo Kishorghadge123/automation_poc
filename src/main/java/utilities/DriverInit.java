@@ -19,7 +19,6 @@ public class DriverInit {
         Functions.test_type = test_type;
         System.out.println("test type is: "+test_type);
     }
-
     @BeforeTest
     @Parameters("browser")
     public void getBrowser(String browser) {
@@ -29,8 +28,6 @@ public class DriverInit {
             driver= new InternetExplorerDriver();
             driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
             driver.manage().window().maximize();
-
-
         }
         else if (browser.equalsIgnoreCase("chrome")){
             System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
@@ -48,7 +45,6 @@ public class DriverInit {
         }
         else{
             System.out.println("invalid browser selected");
-
         }
     }
 }

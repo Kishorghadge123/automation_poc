@@ -2,6 +2,7 @@ package utilities;
 
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -21,18 +22,16 @@ public class APIUtils {
         FileInputStream objfile = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\configs\\api_configs.properties");
         api_config.load(objfile);
     }
-
     public static void setBaseURL() throws IOException {
-        RestAssured.baseURI =api_config.getProperty("base_url");
+        //RestAssured.baseURI = "https://gorest.co.in/public/v2";
+       RestAssured.baseURI =api_config.getProperty("base_url");
     }
-
     public static RequestSpecification initRequest() {
         response = null;
         request = null;
         request = RestAssured.given().filter(new AllureRestAssured());
         return request;
     }
-
 //    @Step("make a post request api call")
     public static Response postRequest(String endpoint, String formdata){
         String token = getToken();
@@ -41,6 +40,33 @@ public class APIUtils {
         request.header("Content-Type", "application/json");
         request.body(formdata);
         response =request.post(endpoint);
+        return response;
+    }
+    public static Response putRequest(String endpoint, String formdata){
+        String token = getToken();
+        request = initRequest();
+        request.header("Authorization", "Bearer "+token);
+        request.header("Content-Type", "application/json");
+        request.body(formdata);
+        response =request.put(endpoint);
+        return response;
+    }
+    public static Response getRequest(String endpoint){
+        String token = getToken();
+        request = initRequest();
+        request.header("Authorization", "Bearer "+token);
+        request.header("Content-Type", "application/json");
+      //  request.body(formdata);
+        response =request.get(endpoint);
+        return response;
+    }
+    public static Response deleteRequest(String endpoint){
+        String token = getToken();
+        request = initRequest();
+        request.header("Authorization", "Bearer "+token);
+        request.header("Content-Type", "application/json");
+        //  request.body(formdata);
+        response =request.delete(endpoint);
         return response;
     }
 

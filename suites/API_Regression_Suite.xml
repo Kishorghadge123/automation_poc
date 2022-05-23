@@ -4,7 +4,6 @@
 	<listeners>
 		<listener class-name="utilities.ListenerUtils"></listener>
 	</listeners>
-  
 	<test name="Test">
 			<parameter name="test_type" value="api"/>
 			<parameter name="environment" value="qa"/>
@@ -15,6 +14,8 @@
 <!--    		</groups>-->
     		<classes>
       			<class name="api.postDataValidation.PostRequestTest"/>
-    		</classes>
+				<class name="api.putDataValidation.PutRequestTest"/>
+				<class name="api.getDataValidation.GetRequestTest"/>
+			</classes>
   	</test> <!-- Test -->
 </suite> <!-- API_Regression_Suite-->

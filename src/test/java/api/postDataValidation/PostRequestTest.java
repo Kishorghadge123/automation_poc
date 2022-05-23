@@ -41,7 +41,6 @@ public class PostRequestTest
         String gender =  response.getBody().jsonPath().getJsonObject("gender").toString();
         String status =  response.getBody().jsonPath().getJsonObject("status").toString();
 
-
         JsonMapper mapper = new JsonMapper();
         JsonNode node = mapper.readValue(body, JsonNode.class);
 
