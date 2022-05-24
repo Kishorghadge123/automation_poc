@@ -5,7 +5,7 @@
 	 <listeners>
 	 	<listener class-name="utilities.ListenerUtils"></listener>
 	 </listeners>
-  
+
 	<test name="Test">
 			<parameter name="test_type" value="ui"/>
     		<parameter name="browser" value="chrome"/>
@@ -17,6 +17,7 @@
 <!--    		</groups>-->
     		<classes>
       			<class name="ui.LoginTest"/>
+				<class name="ui.AccountTest"/>
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- UI_Regression_Suite-->

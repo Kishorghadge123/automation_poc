@@ -15,6 +15,7 @@
 <!--    		</groups>-->
     		<classes>
       			<class name="api.postDataValidation.PostRequestTest"/>
+				<class name="api.putDataValidation.PutRequestTest"/>
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- API_Regression_Suite-->

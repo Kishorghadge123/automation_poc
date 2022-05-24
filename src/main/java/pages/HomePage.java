@@ -12,10 +12,25 @@ public class HomePage {
 	public HomePage(){
 		PageFactory.initElements(driver, this);
 	}
-	
-	
-	@FindBy (xpath="//p[text()=\"Welcome to OpenCart!\"]")
+
+	@FindBy (xpath="//p[text()='Welcome to OpenCart!']")
 	public static WebElement welcomeText;
 
-	
+
+
+	@FindBy (xpath ="//a[@class='btn btn-black navbar-btn']")
+	public static WebElement logout;
+
+	public void welcomeOpenCart()
+	{
+		this.welcomeText();
+	}
+	public void welcomeText() {
+	}
+	public void clikOnLogoutButton(){
+		this.logout.click();
+	}
+
+	public void clickonlogoutbutton() {
+	}
 }
