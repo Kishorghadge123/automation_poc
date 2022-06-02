@@ -14,6 +14,7 @@ import pages.DemoqaPage;
 import utilities.DriverInit;
 import utilities.Functions;
 
+import javax.swing.plaf.synth.SynthProgressBarUI;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -37,19 +38,32 @@ public class DemoqaTest extends DriverInit {
     @Test(priority = '3', groups = "smoke")
 
     public void select_DemoqaTest() throws InterruptedException {
-        Functions.openURL(testdata.getProperty("url"));
-        DemoqaPage Page = new DemoqaPage();
+      //  Functions.openURL(testdata.getProperty("url"));
+       Functions.openURL("https://demoqa.com/");
+        DemoqaPage page = new DemoqaPage();
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0,400)");
         Thread.sleep(2000);
-        Page.clickWidgets();
+        page.clickWidgets();
 
         JavascriptExecutor js1 = (JavascriptExecutor)driver;
         js1.executeScript("window.scrollBy(0,400)");
         Thread.sleep(2000);
-        Page.clickProgress_Bar();
+        page.clickProgress_Bar();
         Thread.sleep(2000);
-        Page.clickStartStopButton();
+        page.clickStartStopButton();
+        Thread.sleep(6000);
+        page.ProgressBarButton();
+
+        Functions.verifyElementDisplayed(page.ProgressBar);
+        Functions.verifyElementDisplayed(page.StartStopButton);
+
+
+        //  Functions.waitForElementLoad(page.StartStopButton,testdata.getProperty("default_timeout"));
+       // Functions.verifyText(page.ProgressBarButton,"22%");
+
+     //  Functions.verifyText(page.StartStopButton,"Start");
+
 
     }
 }
