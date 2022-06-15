@@ -15,14 +15,14 @@ public class DriverInit {
 
     @BeforeTest
     @Parameters("test_type")
-    public static void initTestType(String test_type){
+    public static void initTestType(String test_type)
+    {
         Functions.test_type = test_type;
         System.out.println("test type is: "+test_type);
     }
     @BeforeTest
     @Parameters("browser")
     public void getBrowser(String browser) {
-
         if (browser.equalsIgnoreCase("ie")){
             System.setProperty("webdriver.ie.driver", "Drivers/IEDriverServer.exe");
             driver= new InternetExplorerDriver();

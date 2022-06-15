@@ -28,7 +28,8 @@ public class LoginTest extends DriverInit {
 		driver = DriverInit.driver;
 	}
 	@AfterTest
-	public void closeBrowser() {
+	public void closeBrowser()
+	{
 		driver.quit();
 	}
 	@Severity(SeverityLevel.CRITICAL)
@@ -39,10 +40,12 @@ public class LoginTest extends DriverInit {
         SoftAssert softAssert=new SoftAssert();
 		Functions.openURL(testdata.getProperty("url"));
 		String title=driver.getTitle();
+		Functions.logStep("verifyed Title");
 		softAssert.assertEquals(title,"OpenCart - Open Source Shopping Cart Solution","Title mismatch");
 		LoginPage loginPage = new LoginPage();
 		String actualcurrenturl=driver.getCurrentUrl();
 		String expectedurl="https://www.opencart.com/";
+		Functions.logStep("verify URL");
 		softAssert.assertEquals(actualcurrenturl,expectedurl,"Url is not matched");
 		loginPage.goToLogin();
 		loginPage.enterUsername(testdata.getProperty("username"));
@@ -50,10 +53,11 @@ public class LoginTest extends DriverInit {
 		loginPage.clickLoginButton();
 		loginPage.enterPin(testdata.getProperty("pin"));
 		loginPage.clickContinueButton();
-		Functions.verifyText(loginPage.errorPinMsg,"You have exceeded the allowed number of PIN attempts! Please use the Reset PIN button or contact us page to request your account to be unlocked.");
+//     	Functions.verifyText(loginPage.errorPinMsg,"You have exceeded the allowed number of PIN attempts! Please use the Reset PIN button or contact us page to request your account to be unlocked.");
 		HomePage homePage = new HomePage();
 		homePage.welecomeOpenCart();
 		Functions.waitForElementLoad(HomePage.welcomeText,testdata.getProperty("default_timeout"));
+		Functions.logStep("verifyed welcomeText");
 		Functions.verifyElementDisplayed(HomePage.welcomeText);
 		softAssert.assertAll();
 	}

@@ -11,7 +11,8 @@ import utilities.Functions;
 
 public class HomePage {
 	static WebDriver driver=DriverInit.driver;
-	public HomePage(){
+	public HomePage()
+	{
 		PageFactory.initElements(driver, this);
 	}
 	@FindBy (xpath="//p[text()=\"Welcome to OpenCart!\"]")
@@ -33,7 +34,6 @@ public class HomePage {
 		Functions.drowborder(colorecheck);
 		this.colorecheck.click();
 	}
-
 	private void welcomeText() {
 	}
 

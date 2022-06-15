@@ -13,21 +13,17 @@ import java.util.Properties;
 public class DBUtils {
     private static Connection connection;
     public static Properties db_config;
-
     public static void readConfig() throws IOException {
         db_config = new Properties();
         FileInputStream objfile = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\configs\\db_configs.properties");
         db_config.load(objfile);
     }
-
     @Step("create  connection to the database")
     public static void setConnection() {
-
         try {
             readConfig();
             connection = DriverManager.getConnection(db_config.getProperty("url"), db_config.getProperty("user"), db_config.getProperty("password"));//Establishing connection
             System.out.println("Connected With the database successfully");
-
         } catch (SQLException e) {
             System.out.println("Error while connecting to the database");
         } catch (IOException e) {

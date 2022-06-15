@@ -10,14 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
 import static pages.AccountPage.categoryDropdown;
 import static pages.LoginPage.errorPinMsg;
 
@@ -66,7 +62,7 @@ public class Functions {
 	public static void verifyText(WebElement element, String text) throws InterruptedException{
 		Thread.sleep(1000);
 		SoftAssert softAssert=new SoftAssert();
-		softAssert.assertEquals(errorPinMsg.getText(), text,"text is Not Match ");
+		softAssert.assertEquals(element.getText(), text,"text is Not Match ");
 		softAssert.assertAll();
 	}
 	public static void takescreenshot(String testname) throws IOException
@@ -82,15 +78,13 @@ public class Functions {
 	public static void waitForElementClickable(WebElement element, String timeout){
 		wait = new WebDriverWait(DriverInit.driver, Integer.parseInt(timeout));
 		 wait.until(ExpectedConditions.elementToBeClickable(element));
-
 	}
 	@Attachment
 	public static byte[] saveFailureScreenShot()
 	{
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 	}
-	public static void dropDown(String value)
-	{
+	public static void dropDown(String value) {
 	Select select=new Select(categoryDropdown);
 	select.selectByValue("2");
 		}
@@ -127,6 +121,6 @@ public class Functions {
 	public static void logStep(String message)
 	{
 		// intentionally kept empty
-	}
+	  }
 	}
 

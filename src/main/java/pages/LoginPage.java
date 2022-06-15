@@ -38,7 +38,6 @@ public class LoginPage {
 	public void goToLogin(){
 		Functions.drowborder(loginButton);
 		this.loginButton.click();
-
 	}
 	@Step("enter username {0}")
 	public void enterUsername(String username){
@@ -68,8 +67,8 @@ public class LoginPage {
 		Functions.waitForElementLoad(continueButton,"10");
 		this.continueButton.click();
 	}
-	@Step("pin limit exceeded")
-	public String pinLimitExceeded(){
-    return this.errorPinMsg.getText();
-	}
+//	@Step("pin limit exceeded")
+//	public String pinLimitExceeded(){
+//    return this.errorPinMsg.getText();
+//	}
 }

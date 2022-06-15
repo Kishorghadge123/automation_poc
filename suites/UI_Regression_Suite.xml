@@ -15,7 +15,7 @@
 <!--    		</groups>-->
     		<classes>
       			<class name="ui.LoginTest"/>
-                <class name="ui.AccountTest"></class>
+<!--                <class name="ui.AccountTest"></class>-->
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- UI_Regression_Suite-->
