@@ -60,6 +60,7 @@ public class APIUtils {
         response =request.get(endpoint);
         return response;
     }
+
     public static Response deleteRequest(String endpoint){
         String token = getToken();
         request = initRequest();
@@ -67,6 +68,15 @@ public class APIUtils {
         request.header("Content-Type", "application/json");
         //  request.body(formdata);
         response =request.delete(endpoint);
+        return response;
+    }
+    public static Response patchRequest(String endpoint,String formdata){
+        String token = getToken();
+        request = initRequest();
+        request.header("Authorization", "Bearer "+token);
+        request.header("Content-Type", "application/json");
+        request.body(formdata);
+        response =request.get(endpoint);
         return response;
     }
 

@@ -11,6 +11,8 @@ import utilities.DriverInit;
 import utilities.Functions;
 import java.io.IOException;
 import java.util.Properties;
+import static pages.HomePage.logout;
+
 @Feature("Account feature")
 public class AccountTest extends DriverInit
 {
@@ -30,13 +32,12 @@ public class AccountTest extends DriverInit
     @Description("verify user able to user able to created Account ")
     @Test(priority='3',groups="smoke")
     public void Account_Test() throws InterruptedException {
-
         AccountPage accountPage=new AccountPage();
         accountPage.clickAccount();
         accountPage.clickShowCart();
         accountPage.clickAddProject();
        accountPage.enterShowCaseName("abc");
-       accountPage.selectShowCaseCategory("2");
+       accountPage.selectShowCaseCategory(testdata.getProperty("2"));
        accountPage.selectDate("10","Feb","2023");
        accountPage.enterWebsite("xyz");
        accountPage.clickSubmitButton();
@@ -47,6 +48,7 @@ public class AccountTest extends DriverInit
     @Test(priority='4',groups="smoke")
     public void logoutTest(){
         HomePage homePage=new HomePage();
+        Functions.scrollupdown(logout);
         homePage.clickLogout();
     }
 }
