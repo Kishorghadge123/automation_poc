@@ -41,7 +41,7 @@ public class ExcelUtils {
             {
                 columnHeader.add(cellIterator.next().getStringCellValue());
             }
-            int rowCount = row.getLastCellNum();
+            int rowCount = row.getRowNum();
             int columnCount = row.getLastCellNum();
             for (int i = 0; i <= rowCount-3; i++)
             {
