@@ -12,7 +12,9 @@ public class test {
     @Test
     public void TEST() throws IOException {
 
-        ExcelUtils SW=new ExcelUtils("C:\\Users\\mayur\\Documents\\Newclaim_details.xlsx", 1);
+        ExcelUtils SW=new ExcelUtils("C:\\Users\\mayur\\Documents\\Book1.xlsx", 0);
+        //"C:\\Users\\mayur\\Documents\\Book1.xlsx"
+        //"C:\\Users\\mayur\\Documents\\Newclaim_details.xlsx"
         Map<String, Map<String, String>> edata =SW.getExcelAsMap();
 
         System.out.println("excelData as Map : "+edata);
@@ -20,11 +22,11 @@ public class test {
         int sheetcount=SW.getSheetCount();
         System.out.println("sheetCount" +sheetcount);
 
-        int rowcount=SW.getSheetCount();
-        System.out.println( "columncount :"+rowcount);
+        int columnCount = SW.totolColumnCount();
+        System.out.println("columnCount" +columnCount);
 
         Map<String, Map<String, String>> writedata=SW.writeDatatoTxt(edata);
-        System.out.println();
+        //System.out.println();
 
     }
 }
