@@ -25,7 +25,7 @@ public class test {
         int columnCount = SW.totolColumnCount();
         System.out.println("columnCount" +columnCount);
 
-        Map<String, Map<String, String>> writedata=SW.writeDatatoTxt(edata);
+        Map<String, Map<String, String>> writedata= SW.writeDatatoTxt(edata);
         //System.out.println();
 
     }
