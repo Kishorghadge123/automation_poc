@@ -1,5 +1,6 @@
 package utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -24,20 +25,24 @@ public class DriverInit {
     public void getBrowser(String browser) {
 
         if (browser.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.ie.driver", "Drivers/IEDriverServer.exe");
+            //System.setProperty("webdriver.ie.driver", "Drivers\\IEDriverServer.exe");
+            //Using WebDriverManager to create the browser driver, reduces the dependency on driver exe files
+            WebDriverManager.iedriver().setup();//create();
             driver= new InternetExplorerDriver();
             driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         }
         else if (browser.equalsIgnoreCase("chrome")){
-            System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
+            //System.setProperty("webdriver.chrome.driver", "Drivers\\chromedriver.exe");
+            WebDriverManager.chromedriver().setup();//.create();
             driver= new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
             driver.manage().window().maximize();
             System.out.println("chrome browser started");
         }
         else if (browser.equalsIgnoreCase("firefox")){
-            //System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe");
+            //System.setProperty("webdriver.gecko.driver", "Drivers\\geckodriver.exe");
+            WebDriverManager.firefoxdriver().setup();//.create();
             driver= new FirefoxDriver();
             driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
             driver.manage().window().maximize();

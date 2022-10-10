@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.DriverInit;
 
 public class HomePage {
-	static WebDriver driver=DriverInit.driver;
+	WebDriver driver=DriverInit.driver;
 	public HomePage(){
 		PageFactory.initElements(driver, this);
 	}

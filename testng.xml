@@ -15,7 +15,9 @@
 <!--    			</run>-->
 <!--    		</groups>-->
     		<classes>
-      			<class name="ui.AccountTest"/>
+      			<class name="ui.DemoBlazeTests"/>
+				<class name="utilities.DriverInit"/>
+				<class name="utilities.ExcelUtils"/>
     		</classes>
   	</test> <!-- Test -->
 </suite> <!-- UI_Automation_Smoke_Suite-->

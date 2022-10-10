@@ -39,6 +39,7 @@ public class Functions {
 		Thread.sleep(1000);
 		locator.clear();
 		locator.sendKeys(value);
+
 	}
 	public static void mousehover(WebElement element) throws InterruptedException{
 		Thread.sleep(1000);
