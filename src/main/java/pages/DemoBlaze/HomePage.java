@@ -13,12 +13,12 @@ import utilities.DriverInit;
 import java.time.Duration;
 
 public class HomePage {
-    WebDriver driver = DriverInit.driver;
+    static WebDriver driver = DriverInit.driver;
     FluentWait<WebDriver> wait;
-    //adding PageFactory Initialization in the Initializer block, so that each time a webelement is accessed (directly or via a method),
+    //adding PageFactory Initialization in the Static block, so that each time a webelement is accessed (directly or via a method),
     // the element is re-initialized. For e.g. while running tests with multiple sets of data.
-    /*{
-        PageFactory.initElements(driver, this);
+    /*static{
+        //PageFactory.initElements(driver, this);
         PageFactory.initElements(driver,HomePage.class);
     }*/
 
@@ -38,6 +38,7 @@ public class HomePage {
 
     public String getUserLoginLabel() {
         driver.switchTo().defaultContent();
+        //driver.navigate().refresh();
         try {
             wait.until(ExpectedConditions.elementToBeClickable(lbl_UserName));
         } catch (StaleElementReferenceException sere) {

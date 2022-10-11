@@ -19,22 +19,24 @@ public class DemoBlazeTests {
     HomePage objHomePage;
     LoginPage objLoginPage;
     ExcelUtils objExcelUtils;
+    @Parameters("browser")
     @BeforeClass
-    public void testStart(){
-        driver = DriverInit.driver;
+    public void testStart(String browser){
+        driver = DriverInit.getBrowser(browser);
         objExcelUtils = new ExcelUtils();
+        driver.get("https://www.demoblaze.com/index.html");
         //driver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);
     }
 
     @BeforeMethod
     public void initializePages(){
+        //driver = DriverInit.driver;
         objHomePage = new HomePage();
         objLoginPage = new LoginPage();
         //driver.get("https://www.demoblaze.com/index.html");
     }
     @Test(dataProvider = "testDataProvider")
     public void loginTest(Map<Object, Object> dataMap){
-        driver.get("https://www.demoblaze.com/index.html");
         //Map<String,Object> map = (HashMap<String,Object>) dataMap;
         objHomePage.clickLogInButton();
         objLoginPage.enterUserName((String) dataMap.get("UserName"));
@@ -43,15 +45,16 @@ public class DemoBlazeTests {
         System.out.println(objHomePage.getUserLoginLabel());
         System.out.println(objHomePage.getUserLoginLabel().split(" ")[1]+" | "+(String) dataMap.get("UserName"));
         Assert.assertEquals(objHomePage.getUserLoginLabel().split(" ")[1],(String) dataMap.get("UserName"));
-    }
-
-    @Test(dependsOnMethods = {"loginTest"})
-    public void logoutTest(){
         objHomePage.clickLogOutButton();
         Assert.assertEquals(objHomePage.getSignUpLabel(),"Sign up");
     }
 
-    @AfterTest
+/*    @Test(dependsOnMethods = {"loginTest"})
+    public void logoutTest(){
+
+    }*/
+
+    @AfterClass
     public void closeDriver(){
         driver.quit();
     }

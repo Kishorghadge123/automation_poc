@@ -20,9 +20,9 @@ public class DriverInit {
         Functions.test_type = test_type;
         System.out.println("test type is: "+test_type);
     }
-    @BeforeTest
-    @Parameters("browser")
-    public void getBrowser(String browser) {
+    //@BeforeTest
+    //@Parameters("browser")
+    public static WebDriver getBrowser(String browser) {
 
         if (browser.equalsIgnoreCase("ie")){
             //System.setProperty("webdriver.ie.driver", "Drivers\\IEDriverServer.exe");
@@ -51,5 +51,6 @@ public class DriverInit {
         else{
             System.out.println("invalid browser selected");
         }
+        return driver;
     }
 }
